@@ -1,9 +1,5 @@
 App({
-  todos: [
-    { text: 'sleepping', completed: true },
-    { text: 'eatting', completed: true },
-    { text: 'running', completed: false },
-  ],
+  todos: [],
 
   userInfo: null,
   onShow(options){
