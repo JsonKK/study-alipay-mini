@@ -1,0 +1,25 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/add-todo/add-todo",
+    "pages/test/test"
+  ],
+  "window": {
+    "defaultTitle": "Todo App",
+    "titleBarColor": "#323239"
+  },
+  "tabBar":{
+    "textColor" : "#ccc",
+    "selectedColor" : "#020202",
+    "items":[
+      {
+        "pagePath" : "pages/index/index",
+        "name":"首页"
+      },
+      {
+        "pagePath" : "pages/test/test",
+        "name":"测试"
+      }
+    ]
+  }
+}

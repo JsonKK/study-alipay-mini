@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/todos/todos",
+    "pages/add-todo/add-todo",
+    "pages/test/test"
+  ],
+  "window": {
+    "defaultTitle": "Todo App",
+    "titleBarColor": "#323239"
+  },
+  "tabBar":{
+    "textColor" : "#ccc",
+    "selectedColor" : "#020202",
+    "items":[
+      {
+        "pagePath" : "pages/todos/todos",
+        "name":"首页"
+      },
+      {
+        "pagePath" : "pages/add-todo/add-todo",
+        "name":"增加todo"
+      },
+      {
+        "pagePath" : "pages/todos/todos",
+        "name":"首页"
+      },
+      {
+        "pagePath" : "pages/todos/todos",
+        "name":"首页"
+      }
+    ]
+  }
+}
