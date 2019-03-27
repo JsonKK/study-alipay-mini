@@ -1,4 +1,13 @@
+var appUser = require('../../utils/app-user');
 Page({
   data: {},
-  onLoad() {},
+  onLoad() {
+    appUser.myLogin((res)=>{
+      let a = res;
+    });
+    
+  },
+  onShow(){
+    
+  }
 });

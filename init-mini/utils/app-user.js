@@ -36,32 +36,29 @@ var privateMethods = {
 	    });
 
    		 my.getAuthCode({
+        scopes: ['auth_user'],
    			success : function(data){
    				
    				my.getAuthUserInfo({
 	        		success: function (res) {
-	        			
-	          			// 登录
-	          			appAjax.postJson({
-							service: "LOGIN",
-							data: {
-								authCode: data.authCode,
-								userName : res.nickName,
-								photoUrl : res.avatar
-							},
-							success: function(result) {
-			
-								// 缓存用户信息
-								appUser.saveLoginInfo(result || {});
-								
-					            // 回调
-					            callback && callback(result.dto || {});
-		          		
-							}
-						});
+	        			// 登录
+                appAjax.postJson({
+                  service: "LOGIN",
+                  data: {
+                    authCode: data.authCode,
+                    userName : res.nickName,
+                    photoUrl : res.avatar
+                  },
+                  success: function(result) {
+                    // 缓存用户信息
+                    appUser.saveLoginInfo(result || {});
+                    // 回调
+                    callback && callback(result.dto || {});
+                  }
+                });
 		       		}, 
 		       		fail: function (e) {
-		          		my.hideLoading();
+		          	my.hideLoading();
 		        	}
 	     		});
    			}
@@ -165,7 +162,7 @@ var appUser = {
 	 * @param {Object} callback
 	 * @param {Object} failCallback
 	 */
-	wxLogin : function(callback, failCallback){
+	myLogin : function(callback, failCallback){
 		
 		appUser.login(function(result){
 			// if (result && !result.phone) {

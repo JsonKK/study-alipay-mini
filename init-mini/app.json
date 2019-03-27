@@ -1,12 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/add-todo/add-todo",
     "pages/test/test"
   ],
   "window": {
-    "defaultTitle": "Todo App",
-    "titleBarColor": "#323239"
+    "defaultTitle": "init"
   },
   "tabBar":{
     "textColor" : "#ccc",
