@@ -3,7 +3,7 @@ var constants = require("../config/constants.js");
  * 获取用户信息
  */
 var _getUserinfo = function(){
-    var userInfo = wx.getStorageSync(constants.APP_USERINFO_SESSION);
+    var userInfo = my.getStorageSync({key:constants.APP_USERINFO_SESSION});
 
     return userInfo;
 };
@@ -52,7 +52,7 @@ module.exports = {
      * 清楚用户信息
      */
     clearUserInfo : function(){
-    	wx.removeStorageSync(constants.APP_USERINFO_SESSION);
+    	my.removeStorageSync({key: constants.APP_USERINFO_SESSION});
     },
 
     /**
