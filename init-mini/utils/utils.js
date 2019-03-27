@@ -118,34 +118,6 @@ var utils = {
 	},
 
 	/**
-	 * 获取当前页面url
-	 */
-	getCurrentUrl: function() {
-	
-		var pageStack = getCurrentPages();
-		var thisPage = pageStack[pageStack.length - 1];
-	
-		var baseUrl = thisPage.route;
-		var paramObj = thisPage.options;
-		var params = "";
-	
-		if(this.isEmptyObject(paramObj)) {
-			return baseUrl;
-		} else {
-			for(var i in paramObj) {
-				if(params.indexOf("?") >= 0) {
-					params += "&";
-				} else {
-					params += "?";
-				}
-				params += i + "=" + paramObj[i];
-			}
-		}
-	
-		return baseUrl + params;
-	},
-
-	/**
 	 * 替换html特殊字符串
 	 */
 	replaceHtmlString: function(str) {
@@ -246,34 +218,6 @@ var utils = {
 	resourceSuffix : function() {
 		var randomStr = '?' + new Date().getTime().toString().slice(0,7) + '000000';
 		return randomStr;
-	},
-	
-	/**
-	 * 资讯跳转方法（文章、图集）
-	 * @param {Object} options	
-	 * 		jumpType:跳转方法名,
-	 * 		infoType：资讯类型1文章  2图集  3视频  4链接(不支持),
-	 * 		id:资讯详情id
-	 */
-	jumpToInfo : function(options) {
-		
-		var id = options.id ? options.id : "";
-		var type = options.infoType ? options.infoType : 1;
-		var jumpType = (options.jumpType && 
-						(options.jumpType in wx) && 
-						(typeof wx[options.jumpType] == 'function')) ? options.jumpType : "navigateTo";
-		
-		// 1文章  2图集  3视频  4链接(不支持)
-		var infoConfig = {
-			1 : "/pages/discovery/info",
-			2 : "/pages/discovery/picture-info"
-		};
-		
-		var path = (type in infoConfig) ? (infoConfig[type] + "?id=" + id) : (infoConfig[1] + "?id=" + id);
-		
-    	wx[jumpType]({
-     		url: path
-    	});
 	}
 };
 
