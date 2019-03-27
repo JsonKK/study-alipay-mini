@@ -19,14 +19,6 @@
       {
         "pagePath" : "pages/add-todo/add-todo",
         "name":"增加todo"
-      },
-      {
-        "pagePath" : "pages/todos/todos",
-        "name":"首页"
-      },
-      {
-        "pagePath" : "pages/todos/todos",
-        "name":"首页"
       }
     ]
   }

@@ -19,11 +19,22 @@ Page({
 
   onShow() {
     this.setData({ todos: app.todos });
-    my.showLoading({
-      content: '加载中...',
-      delay: 1000,
+  },
+
+  onPullDownRefresh() {
+    my.alert({
+      title: '亲',
+      content: '您本月的账单已出',
+      buttonText: '我知道了',
+      success: () => {
+        my.alert({
+          title: '用户点击了「我知道了」',
+        });
+        my.stopPullDownRefresh();
+      },
     });
   },
+
 
   onTodoChanged(e) {
     const checkedTodos = e.detail.value;
