@@ -82,11 +82,11 @@ var appUser = {
     	if (!appSession.loginCheck()) {
      		appUser.login(function (result) {
 	        	if (result && !result.phone) {
-	        		wx.navigateTo({
+	        		my.navigateTo({
 	            		url: '../register/bind-phone?page=' + page
 	          		})
 	        	} else {
-		           	wx.navigateTo({
+		           	my.navigateTo({
 		             	url: page
 		           	})
 	        	}
@@ -95,7 +95,7 @@ var appUser = {
 	        	callback && callback();
 	      	});
 	    } else {
-	      	wx.navigateTo({
+	      	my.navigateTo({
 	        	url: page
 	      	})
 	    }
@@ -112,13 +112,15 @@ var appUser = {
     	if (!appSession.loginCheck()) {
       		appUser.login(function (result) {
 
-		        if (result && !result.phone) {
-		           	wx.navigateTo({
-		             	url: "../register/bind-phone?page=" + page
-		           	});
-		        } else {
-		           callback && callback();
-		        }
+      			callback && callback();
+
+		        // if (result && !result.phone) {
+		        //    	my.navigateTo({
+		        //      	url: "../register/bind-phone?page=" + page
+		        //    	});
+		        // } else {
+		        //    callback && callback();
+		        // }
      	 	});
     	} else {
      		callback && callback();
@@ -136,22 +138,7 @@ var appUser = {
 		var that = this;
     
 	    // 查看是否授权
-	    wx.getSetting({
-	      	success: function (res) {
-	        	if (res.authSetting['scope.userInfo']) {
-	        		
-	         	 	// 已经授权，可以直接调用 getUserInfo 获取头像昵称
-	          		privateMethods._login(callback);
-	        	} else {
-		          	app.loginCallback = function() {
-		            	privateMethods._login(callback);
-		          	};
-		          	wx.navigateTo({
-			            url: '/pages/auth/authorized-login'
-			        });
-		        }
-	      	}
-	    });
+	    privateMethods._login(callback);
 	},
 	
 	/**
@@ -159,7 +146,7 @@ var appUser = {
 	 */
 	logOut : function(callback) {
 		var that = this;
-		wx.showModal({
+		my.confirm({
 			title: '',
 			content: '确定要退出您的账号？',
 			success: function(res) {
@@ -172,59 +159,21 @@ var appUser = {
 			}
 		});
 	},
-
-	/**
-	 * 获取微信地址
-	 * @param {Object} callback 回调
-	 */
-	getWxAddress: function(self, callback) {
-		wx.getSetting({
-			success(res) {
-				var status = res.authSetting['scope.address'];
-				if(status == undefined) {
-					wx.authorize({
-						scope: 'scope.address',
-						success() {
-
-							// 用户已经同意小程序使用地址功能，后续调用地址接口不会弹窗询问
-							wx.chooseAddress({
-								success: function(result) {
-									callback && callback(result);
-								}
-							});
-						},
-						fail() {
-							self.setData({
-								wxAddressShow: true
-							});
-						}
-					});
-				} 
-				else if(status) { // 已获取权限
-					wx.chooseAddress({
-						success: function(result) {
-							callback && callback(result);
-						}
-					});
-				}
-			}
-		});
-	},
 	
 	/**
-	 * 微信登录
+	 * 登录
 	 * @param {Object} callback
 	 * @param {Object} failCallback
 	 */
 	wxLogin : function(callback, failCallback){
 		
 		appUser.login(function(result){
-			if (result && !result.phone) {
-        		wx.navigateTo({
-            		url: '../register/bind-phone'
-          		})
-        		return;
-        	}
+			// if (result && !result.phone) {
+   //      		my.navigateTo({
+   //          		url: '../register/bind-phone'
+   //        		})
+   //      		return;
+   //      	}
 			
 			callback && callback(result || {});
 		}, failCallback);
