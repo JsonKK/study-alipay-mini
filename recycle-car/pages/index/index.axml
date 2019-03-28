@@ -1,0 +1,54 @@
+<view>
+
+  <view class="banner">
+    <view class="logo" style="opacity: {{titleOpacity}}">
+      <image src="/image/component_logo.png" mode="aspectFit" />
+    </view>
+    <view class="title" style="opacity: {{titleOpacity}}">回收机
+    </view>
+    <view class="sub-title"style="opacity: {{titleOpacity}}">比闲鱼更闲的跑腿服务
+    </view>
+    <!-- <view class="fake-searchbar" onTap="onSearchBarTap">
+      <icon type="search" size="14" color="#1D1D1D" />
+      <text class="fake-placeholder">搜索你想要的组件和API
+      </text>
+    </view> -->
+  </view>
+
+  <view class="list-wrap">
+    <view class="list-container" style="transform: translate3d( 0vw, 0, 0)">
+      <view class="list" style="height:auto">
+        <list className="list-item">
+          <view slot="header" class="list-header">旧物列表</view>
+          <list-item arrow="{{false}}" multipleLine="{{false}}" align="middle">
+            <view style="display: flex;align-items: center;">
+              <image src="/assets/icon/picker-view.png" class="thumb"  mode="aspectFit" />
+              <text class="component-name">旧物名称</text>
+              <text class="component-brief">注释</text>
+            </view>
+            <view class="cancel-icon">
+              <icon type="cancel" size="20"/>
+            </view>
+          </list-item>
+          <view class="operation">
+            <view class="add">
+              <image class="add-icon" mode="scaleToFill" src="/assets/icon/icon_add.png" />
+              添加旧物
+            </view>
+          </view>
+        </list>
+        </view>
+      </view>
+    </view>
+
+    <!-- 按钮 -->
+    <view class="under-bottom">
+      <button  type="primary">
+        <text>发布</text>
+        <view style= "word-break: normal;display:inline-block;margin-left:24rpx;">
+          <badge slot="inner" overflowCount="199" text="99"></badge>
+        </view>
+      </button>
+    </view>
+  </view>
+</view>

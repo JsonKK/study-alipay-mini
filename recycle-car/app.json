@@ -1,0 +1,27 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/my/my"
+  ],
+  "window": {
+    "defaultTitle": "回收机"
+  },
+  "tabBar":{
+    "textColor" : "#ccc",
+    "selectedColor" : "#b2ccff",
+    "items":[
+      {
+        "pagePath" : "pages/index/index",
+        "name":"首页",
+        "icon":"/assets/icon/home.png",
+        "activeIcon":"/assets/icon/home-active.png"
+      },
+      {
+        "pagePath" : "pages/my/my",
+        "name":"我的",
+        "icon":"/assets/icon/my.png",
+        "activeIcon":"/assets/icon/my-active.png"
+      }
+    ]
+  }
+}
