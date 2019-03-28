@@ -1,3 +1,9 @@
 api-demo/.tea
 demo-todo/.tea
 init-mini/.tea
+recycle-car/.tea
+
+recycle-car/node_modules
+api-demo/node_modules
+demo-todo/node_modules
+init-mini/node_modules
