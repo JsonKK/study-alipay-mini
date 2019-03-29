@@ -32,8 +32,10 @@
           </list-item>
           <view class="operation">
             <view class="add">
-              <image class="add-icon" mode="scaleToFill" src="/assets/icon/icon_add.png" />
-              添加旧物
+              <navigator url="/pages/information/information" open-type="navigate">
+                <image class="add-icon" mode="scaleToFill" src="/assets/icon/icon_add.png" />
+                添加旧物
+              </navigator>
             </view>
           </view>
         </list>

@@ -1,3 +1,27 @@
 <view>
-  New Page
+  <list>
+    <view slot="header">处理记录</view>
+    <block>
+      <list-item arrow="true" align="left"  >
+        回收等待
+        <!-- <view class="am-list-brief">
+          内容2
+        </view> -->
+        <view slot="extra">
+          <badge overflowCount="99" text="10"></badge>
+        </view>
+      </list-item>
+      <list-item arrow="true" align="left"  >
+        回收完成
+        <!-- <view class="am-list-brief">
+          内容2
+        </view> -->
+        <view slot="extra">
+          <badge overflowCount="99" text="10"></badge>
+        </view>
+      </list-item>
+    </block>
+    <view slot="footer">列表尾部
+    </view>
+  </list>
 </view>
