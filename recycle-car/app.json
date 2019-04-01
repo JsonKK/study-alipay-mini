@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/information/information",
     "pages/index/index",
-    "pages/my/my",
-    "pages/information/information"
+    "pages/my/my"
+    
   ],
   "window": {
     "defaultTitle": "回收机"

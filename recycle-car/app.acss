@@ -94,3 +94,9 @@ button {
   background-color: #ddd;
   margin-left: 30rpx;
 }
+.under-bottom{
+  padding: 0.32rem;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  width: 100%;
+}

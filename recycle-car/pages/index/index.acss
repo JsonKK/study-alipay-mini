@@ -147,9 +147,3 @@
   margin-right: 16rpx;
   margin-top: -1px;
 }
-.under-bottom{
-  padding: 0.32rem;
-  flex-shrink: 0;
-  box-sizing: border-box;
-  width: 100%;
-}

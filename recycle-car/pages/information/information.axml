@@ -1,12 +1,15 @@
 <view class="content">
   <view className="sub-title">图片信息</view>
   <flex wrap="wrap">
-    <view class="placeholder inline none"></view>
-    <view class="placeholder inline">
-      <image src="/assets/image/1bebb89e74346e162f51bb5e42656949portait.jpg" mode="scaleToFill" />
-    </view>
+    <block a:if="{{imgArr && imgArr.length>0}}">
+      <view class="placeholder inline" a:for="{{imgArr}}" a:for-index="idx" a:for-item="itemName">
+        <view class="icon-remove" onTap="removeImg" data-index="{{idx}}"></view>
+        <image src="{{itemName}}" mode="scaleToFill" data-index="{{idx}}" onTap="previewImg" />
+      </view>
+    </block>
+    <view class="placeholder inline none" onTap="choseImg"></view>
   </flex>
-  <view class="add-image"></view>
+  <!-- <view class="add-image" ></view> -->
 
   <view className="sub-title">类目选择</view>
   <picker onChange="bindPickerChange" value="{{index}}" range="{{array}}">
@@ -17,17 +20,25 @@
 
   <view className="sub-title">价格区间</view>
   <view class="form">
-    <input type="number" placeholder="" />
+    <input class="half" type="number" placeholder="" />
     <text class="line">-</text>
-    <input type="number" placeholder="" />
+    <input class="half" type="number" placeholder="" />
   </view>
 
   <view className="sub-title">让利区间</view>
   <view class="profit">
     <text class="price-infor">555-666</text>
-    <view class="body-view">
+    <view class="body-view" style="">
       <slider value="60" />
     </view>
   </view>
   
+  <view className="sub-title">联系人</view>
+  <view class="form">
+    <input type="text" placeholder="" auto-focus password />
+  </view>
+</view>
+
+<view class="under-bottom">
+  <button  type="primary">增加</button>
 </view>
