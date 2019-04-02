@@ -12,33 +12,44 @@
   <!-- <view class="add-image" ></view> -->
 
   <view className="sub-title">类目选择</view>
-  <picker onChange="bindPickerChange" value="{{index}}" range="{{array}}">
+  <picker onChange="bindPickerChange" value="{{classIndex}}" range="{{classArr}}">
     <view class="choose-slider">
-      {{array[index]}}
+      {{classArr[classIndex]}}
     </view>
   </picker>
 
   <view className="sub-title">价格区间</view>
   <view class="form">
-    <input class="half" type="number" placeholder="" />
+    <input class="half" type="number" placeholder="" onInput="priceRange" data-index="0" />
     <text class="line">-</text>
-    <input class="half" type="number" placeholder="" />
+    <input class="half" type="number" placeholder="" onInput="priceRange" data-index="1" />
+    <text class="line">元</text>
   </view>
 
   <view className="sub-title">让利区间</view>
   <view class="profit">
-    <text class="price-infor">555-666</text>
+    <block a:if="{{profitpriceRange && profitpriceRange.length>0}}">
+      <text class="price-infor">{{profitpriceRange[0]}} - {{profitpriceRange[1]}}元</text>
+    </block>
+    <block a:else>
+      <text class="price-infor">0元</text>
+    </block>
     <view class="body-view" style="">
-      <slider value="60" />
+      <slider onChange="changeSlider" show-value="true" min="5" max="80" value="{{rangeValue}}" disabled="{{isPassPrice}}" />
     </view>
   </view>
   
   <view className="sub-title">联系人</view>
   <view class="form">
-    <input type="text" placeholder="" auto-focus password />
+    <input type="text" placeholder="请输入联系人" data-name="username" onInput="disposeValue" value=""  />
+  </view>
+
+  <view className="sub-title">物品名称</view>
+  <view class="form">
+    <input type="text" placeholder="请输入物品名称" data-name="goodsname" onInput="disposeValue" value=""  />
   </view>
 </view>
 
 <view class="under-bottom">
-  <button  type="primary">增加</button>
+  <button  type="primary" onTap="addGoods">增加</button>
 </view>
