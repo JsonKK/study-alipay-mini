@@ -1,10 +1,9 @@
 /**
  * 请求方法
  */
-
+var app = getApp();
 var appSession = require('./app-session.js');
 var underscore = require('./underscore-extend.js');
-var app = getApp();
 const servicesConfig = require('../config/services-config.js');
 var appBasicParams = app.basicParams;
 var serviceUrl = app.serviceUrl;
@@ -27,7 +26,7 @@ var localParamName = {
 /* 基础通信参数  */
 var _authClient = function() {
 	
-	var deviceId = my.getStorageSync(localParamName.deviceId) || 'miniprogram';
+	var deviceId = my.getStorageSync(localParamName.deviceId).data || 'miniprogram';
 
     var userActionParams = my.getStorageSync(localParamName.userActionParams).data || {channelQrcodeId:''};
     

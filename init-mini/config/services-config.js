@@ -8,6 +8,7 @@ var _ = require('../utils/underscore-extend.js');
 
 // 通用接口配置	
 var commonServiceConfig = {
+	"LOGIN" : "test-url"
 };
 
 var searchConfig = {

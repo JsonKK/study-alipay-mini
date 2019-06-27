@@ -3,7 +3,7 @@ var app = getApp();
  * 获取用户信息
  */
 var _getUserinfo = function(){
-    var userInfo = my.getStorageSync({key:app.basicParams.APP_USERINFO_SESSION});
+    var userInfo = my.getStorageSync({key:app.basicParams.APP_USERINFO_SESSION}).data;
 
     return userInfo;
 };
@@ -25,14 +25,16 @@ var _getValueByKey = function(key){
     return userinfo[key];
 };
 
+var _getToken = function(){
+    return _getValueByKey("userTokenId");
+}
+
 module.exports = {
 
     /**
      * 从缓存获取token
      */
-    getToken : function(){
-       return _getValueByKey("userTokenId");
-    },
+    getToken : _getToken,
 
     /**
      * 通过key获取对应信息
@@ -44,9 +46,7 @@ module.exports = {
     /**
      * 获取用户信息
      */
-    getUserinfo : function(){
-    	return _getUserinfo();
-    },
+    getUserinfo : _getUserinfo,
     
     /**
      * 清楚用户信息
