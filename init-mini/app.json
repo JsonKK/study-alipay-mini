@@ -1,23 +1,23 @@
 {
-  "pages": [
-    "pages/index/index",
-    "pages/test/test"
-  ],
-  "window": {
-    "defaultTitle": "init"
-  },
-  "tabBar":{
-    "textColor" : "#ccc",
-    "selectedColor" : "#020202",
-    "items":[
-      {
-        "pagePath" : "pages/index/index",
-        "name":"首页"
-      },
-      {
-        "pagePath" : "pages/test/test",
-        "name":"测试"
-      }
-    ]
-  }
+	"pages": [
+		"pages/index/index",
+		"pages/test/test"
+	],
+	"window": {
+		"defaultTitle": "init"
+	},
+	"tabBar": {
+		"textColor": "#ccc",
+		"selectedColor": "#020202",
+		"items": [
+			{
+				"pagePath": "pages/index/index",
+				"name": "首页"
+			},
+			{
+				"pagePath": "pages/test/test",
+				"name": "测试"
+			}
+		]
+	}
 }

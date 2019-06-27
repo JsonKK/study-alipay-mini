@@ -4,34 +4,53 @@
 
 var appSession = require('./app-session.js');
 var underscore = require('./underscore-extend.js');
+var app = getApp();
 const servicesConfig = require('../config/services-config.js');
-const CONSTANTS = require('../config/constants.js');
+var appBasicParams = app.basicParams;
+var serviceUrl = app.serviceUrl;
+var appVersion = app.APP_VERSION;
+var appId = appBasicParams.APP_ID;
+var miniId = appBasicParams.miniId;
+var siteId = appBasicParams.SITE_ID;
 
-var isLoadingButton = false;
-var tempLoading = {};
+var localParamName = {
+    // 设备id缓存名
+    deviceId : 'temp_device_id',
+    // 用户收集缓存名
+    userActionParams : 'userActionParams',
+    // openId缓存名
+    openId : 'openId',
+    // 交互返回失败提示
+    errorMsg : '有点忙开个小差，稍后再试~'
+}
 
 /* 基础通信参数  */
 var _authClient = function() {
-	var deviceId = "miniprogram";
+	
+	var deviceId = my.getStorageSync(localParamName.deviceId) || 'miniprogram';
 
-	var auth = {
-		authParams: {
-			timestamp: new Date().getTime(),
-			deviceId: deviceId,
-		},
-		clientParams: {
-			os: "mini",
-			network: "",
-			deviceId: deviceId,
-			appVersion: CONSTANTS.APP_VERSION
-		},
-		openId: appSession.getUserInfoByKey("openId") || '',
-		appId: CONSTANTS.APP_ID,
-		areaCode: CONSTANTS.AREA_CODE,
-		miniId: CONSTANTS.MINI_ID
-	};
-
-	return auth;
+    var userActionParams = my.getStorageSync(localParamName.userActionParams).data || {channelQrcodeId:''};
+    
+    var auth = {
+		authParams : {
+            timestamp : new Date().getTime(),
+            token : appSession.getToken(),
+			deviceId : deviceId,
+            openId : appSession.getUserInfoByKey("openId") || ''
+        },
+        clientParams : {
+          	os: "miniprogram",
+            network: "",
+			deviceId : deviceId,
+            appVersion: appVersion
+        },
+        appId : appId,
+        siteId: siteId,
+        miniId:	miniId
+    };
+    auth = underscore.deepExtend(true, auth, userActionParams);
+    
+    return auth;
 };
 
 /**
@@ -103,7 +122,7 @@ var appAjax = {
 		}
 		
 		// rest请求路径
-		ajaxParams["url"] = CONSTANTS["SERVICE_URL"] + _getInterfaceUrl(ajaxParams);
+		ajaxParams["url"] = serviceUrl + _getInterfaceUrl(ajaxParams);
 		
 		// 是否展示loading
 		if(ajaxParams.autoShowWait && my.showLoading) {
@@ -148,23 +167,7 @@ var appAjax = {
 	        }
 	    });
 
-	},
-	
-	/**
-     * 上下拉
-     */
-    datalistParam: function() {
-      return {
-        lastdate: 0,
-        pageSize: 20,
-        type: "DOWN" // DOWN UP
-      };
-    },
-    
-    // 下拉
-    scrollDown: "DOWN",
-    // 上拉
-    scrollUp: "UP"
+	}
 };
 
 module.exports = appAjax;
