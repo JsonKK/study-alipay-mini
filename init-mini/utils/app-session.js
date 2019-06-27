@@ -1,9 +1,9 @@
-var constants = require("../config/constants.js");
+var app = getApp();
 /**
  * 获取用户信息
  */
 var _getUserinfo = function(){
-    var userInfo = my.getStorageSync({key:constants.APP_USERINFO_SESSION});
+    var userInfo = my.getStorageSync({key:app.basicParams.APP_USERINFO_SESSION});
 
     return userInfo;
 };
@@ -52,7 +52,7 @@ module.exports = {
      * 清楚用户信息
      */
     clearUserInfo : function(){
-    	my.removeStorageSync({key: constants.APP_USERINFO_SESSION});
+    	my.removeStorageSync({key: app.basicParams.APP_USERINFO_SESSION});
     },
 
     /**

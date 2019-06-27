@@ -1,6 +1,5 @@
 var appAjax = require('./app-ajax.js');
 var appSession = require("./app-session.js");
-var constants = require("../config/constants")
 var app = getApp();
 
 var remote = {
@@ -198,7 +197,7 @@ var appUser = {
 
 		result.openId && (data.openId = result.openId);
 
-		my.setStorageSync(constants.APP_USERINFO_SESSION, data);
+		my.setStorageSync(app.basicParams.APP_USERINFO_SESSION, data);
 	}
 };
 
